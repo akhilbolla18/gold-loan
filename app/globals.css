@@ -1,14 +1,62 @@
-@import "tailwindcss";
-
 @import "../styles/tokens.css";
 @import "../styles/themes/light.css";
 @import "../styles/themes/dark.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
-  margin: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto !important;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: none;
   font-family: var(--font-primary);
   background-color: var(--color-bg);
   color: var(--color-text);
+  border-radius: 4px;
+}
+
+/* Mobile-first: Full width on mobile devices */
+@media all and (min-width: 476px) {
+  html {
+    background-color: rgb(226 232 240);
+    /* slate-200 equivalent */
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    /* padding-top: 2rem; */
+  }
+
+  body {
+    width: 375px !important;
+    height: 90vh !important;
+    min-height: auto;
+    box-shadow: 0px 0px 6px 3px rgba(119, 119, 119, 0.5);
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0;
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 0;
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar-track {
+  width: 0;
+  -webkit-appearance: none;
 }

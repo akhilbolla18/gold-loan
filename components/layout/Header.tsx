@@ -11,29 +11,32 @@ export default function Header({ title, onBack }: HeaderProps) {
   return (
     <header
       className="
-        h-14 px-4
-        flex items-center gap-3
+        relative
+        w-full h-14
+        flex items-center justify-center
         bg-headerBg
       "
     >
-      {/* Back Arrow */}
-      {onBack && (
-        <button onClick={onBack}>
-          <Image
-            src="/icons/back-arrow.svg"
-            alt="Back"
-            width={24}
-            height={24}
-          />
-        </button>
-      )}
+      {onBack && <button
+        onClick={onBack}
+        className="absolute left-4 flex items-center justify-center"
+        aria-label="Back"
+      >
+        <Image
+          src="/icons/back-arrow.svg"
+          alt="Back"
+          width={24}
+          height={24}
+        />
+      </button>
+      }
 
-      {/* Title */}
       <h1
         className="
-          text-headerText
           font-primary font-medium
           text-[18px]
+          text-headerText
+          leading-none
         "
       >
         {title}
