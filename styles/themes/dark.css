@@ -1,0 +1,16 @@
+[data-theme="dark"] {
+  --color-primary: #00AEEF;
+  --color-primary-text: #FFFFFF;
+
+  --color-bg: #000000;
+  --color-text: #FFFFFF;
+
+  --color-border: #434343;
+  --color-placeholder: #9CA3AF;
+
+  --color-step-bg: #00AEEF2E;
+  --color-step-fill: #00AEEF;
+
+  --header-bg: #242D3C;
+  --header-text: #F1F1F1;
+}
