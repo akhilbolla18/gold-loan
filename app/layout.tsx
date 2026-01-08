@@ -12,7 +12,7 @@ export default function RootLayout({
   const theme = useThemeStore((s) => s.theme);
 
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme={theme}>
       <body>
         <MobileContainer>{children}</MobileContainer>
       </body>

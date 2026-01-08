@@ -15,7 +15,6 @@ export default function ApplyGoldLoanPage() {
 
       <StepProgress currentStep={step} totalSteps={7} />
 
-      {/* CONTENT AREA (328px aligned) */}
       <ScreenContainer>
         <QDE1PersonalDetails />
       </ScreenContainer>
