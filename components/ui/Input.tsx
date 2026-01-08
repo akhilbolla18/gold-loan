@@ -17,12 +17,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             className="
-              font-primary text-xs font-normal
-              text-[var(--label-text)]
+              font-primary text-[12px] font-normal leading-[1.38] tracking-normal
+              text-labelText
             "
           >
             {label}
-            {required && <span className="text-red-500"> *</span>}
+            {/* {required && <span className="text-red-500"> *</span>} */}
           </label>
         )}
 
@@ -33,8 +33,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             `
             h-input w-full px-3
             rounded-md
-            bg-bg text-text
+            bg-bg
+            text-inputText
+            font-primary font-normal text-sm 
             border border-border
+            leading-[1.4] tracking-normal
             placeholder:text-placeholder
             outline-none
             focus:ring-1 focus:ring-primary

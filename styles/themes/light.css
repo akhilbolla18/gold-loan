@@ -8,9 +8,12 @@
   --color-border: #CCD3DD;
   --color-placeholder: #667B98;
 
-  --color-step-bg: #004B8D1A;
+  --color-step-bg: #004B8D0F;
   --color-step-fill: #004B8D;
 
   --header-bg: #004B8D;
   --header-text: #F1F1F1;
+
+  --label-text: #334F76;
+  --input-text: #334F76;
 }

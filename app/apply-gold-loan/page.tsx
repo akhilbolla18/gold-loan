@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import StepProgress from "@/components/layout/StepProgress";
 import ScreenContainer from "@/components/layout/ScreenContainer";
 import QDE1PersonalDetails from "@/components/steps/QDE1PersonalDetails";
+import QDE2BusinessDetails from "@/components/steps/QDE2BusinessDetails";
 import { useJourneyStore } from "@/store/journey.store";
 
 export default function ApplyGoldLoanPage() {
@@ -16,7 +17,8 @@ export default function ApplyGoldLoanPage() {
       <StepProgress currentStep={step} totalSteps={7} />
 
       <ScreenContainer>
-        <QDE1PersonalDetails />
+        {step === 1 && <QDE1PersonalDetails />}
+        {step === 2 && <QDE2BusinessDetails />}
       </ScreenContainer>
     </div>
   );

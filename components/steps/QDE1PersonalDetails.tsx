@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
 import GoldPuritySlider from "@/components/ui/GoldPuritySlider";
 import { qde1Schema, QDE1FormData } from "@/schemas/qde1.schema";
 import { useJourneyStore } from "@/store/journey.store";
@@ -34,7 +35,7 @@ export default function QDE1PersonalDetails() {
             className="flex flex-col gap-4"
         >
             <Input
-                label="Title"
+                label="TITLE *"
                 required
                 placeholder="Enter title"
                 {...register("title")}
@@ -42,43 +43,49 @@ export default function QDE1PersonalDetails() {
             />
 
             <Input
-                label="First Name"
+                label="FIRST NAME *"
                 required
-                placeholder="Enter name"
+                placeholder="Enter first name"
                 {...register("firstName")}
                 error={errors.firstName?.message}
             />
 
             <Input
-                label="Middle Name"
-                placeholder="Enter name"
+                label="MIDDLE NAME"
+                placeholder="Enter middle name"
                 {...register("middleName")}
             />
 
             <Input
-                label="Last Name"
+                label="LAST NAME *"
                 required
-                placeholder="Enter name"
+                placeholder="Enter last name"
                 {...register("lastName")}
                 error={errors.lastName?.message}
             />
 
             <Input
-                label="Date of Birth (DOB)"
+                label="DATE OF BIRTH (DOB) *"
                 required
                 placeholder="DD/MM/YYYY"
                 {...register("dob")}
                 error={errors.dob?.message}
             />
 
-            <Input
-                label="Gender"
-                placeholder="MALE"
+            <Select
+                label="GENDER"
                 {...register("gender")}
+                error={errors.gender?.message}
+                options={[
+                    { value: "male", label: "MALE" },
+                    { value: "female", label: "FEMALE" },
+                    { value: "other", label: "OTHER" },
+                ]}
             />
 
+
             <Input
-                label="Mobile Number"
+                label="MOBILE NUMBER *"
                 required
                 placeholder="Enter your mobile number"
                 {...register("mobile")}
@@ -86,7 +93,7 @@ export default function QDE1PersonalDetails() {
             />
 
             <Input
-                label="PAN Number"
+                label="PAN NUMBER *"
                 required
                 placeholder="Enter your PAN number"
                 {...register("pan")}
@@ -99,7 +106,7 @@ export default function QDE1PersonalDetails() {
             />
 
             <Input
-                label="Loan Amount"
+                label="LOAN AMOUNT *"
                 required
                 placeholder="Enter loan amount"
                 {...register("loanAmount")}
@@ -110,13 +117,13 @@ export default function QDE1PersonalDetails() {
             <button
                 type="submit"
                 className="
-          mt-4
-          h-button w-full
-          rounded
-          bg-primary
-          text-primaryText
-          font-medium text-base
-        "
+                mt-4
+                h-button w-full
+                rounded
+                bg-primary
+                text-primaryText
+                font-medium text-base
+                "
             >
                 Save & Continue
             </button>

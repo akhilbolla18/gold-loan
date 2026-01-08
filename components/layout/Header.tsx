@@ -17,7 +17,7 @@ export default function Header({ title, onBack }: HeaderProps) {
         bg-headerBg
       "
     >
-      {onBack && <button
+      {/* {onBack && <button
         onClick={onBack}
         className="absolute left-4 flex items-center justify-center"
         aria-label="Back"
@@ -29,7 +29,20 @@ export default function Header({ title, onBack }: HeaderProps) {
           height={24}
         />
       </button>
-      }
+      } */}
+
+      <button
+        onClick={onBack}
+        className="absolute left-4 flex items-center justify-center"
+        aria-label="Back"
+      >
+        <Image
+          src="/icons/back-arrow.svg"
+          alt="Back"
+          width={24}
+          height={24}
+        />
+      </button>
 
       <h1
         className="
@@ -37,6 +50,7 @@ export default function Header({ title, onBack }: HeaderProps) {
           text-[18px]
           text-headerText
           leading-none
+          tracking-normal
         "
       >
         {title}

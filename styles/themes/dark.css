@@ -13,4 +13,7 @@
 
   --header-bg: #242D3C;
   --header-text: #F1F1F1;
+
+  --label-text: #F1F1F1; /* replace with figma color */
+  --input-text: #F1F1F1; /* replace with figma color */
 }

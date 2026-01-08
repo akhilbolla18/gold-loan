@@ -24,6 +24,9 @@ module.exports = {
 
         headerBg: "var(--header-bg)",
         headerText: "var(--header-text)",
+
+        labelText: "var(--label-text)",
+        inputText: "var(--input-text)",
       },
       fontFamily: {
         primary: ["Work Sans", "sans-serif"],
