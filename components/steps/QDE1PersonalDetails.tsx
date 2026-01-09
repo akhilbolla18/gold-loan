@@ -7,25 +7,30 @@ import Select from "@/components/ui/Select";
 import GoldPuritySlider from "@/components/ui/GoldPuritySlider";
 import { qde1Schema, QDE1FormData } from "@/schemas/qde1.schema";
 import { useJourneyStore } from "@/store/journey.store";
-import { useState } from "react";
 
 export default function QDE1PersonalDetails() {
     const nextStep = useJourneyStore((s) => s.nextStep);
-    const [goldPurity, setGoldPurity] = useState(10);
+    const qde1Data = useJourneyStore((s) => s.qde1);
+    const setQDE1 = useJourneyStore((s) => s.setQDE1);
 
     const {
         register,
         handleSubmit,
+        setValue,
+        watch,
         formState: { errors },
     } = useForm<QDE1FormData>({
         resolver: zodResolver(qde1Schema),
-        defaultValues: {
+        defaultValues: qde1Data || {
             goldPurity: 10,
         },
     });
 
+    const goldPurity = watch("goldPurity", 10);
+
     const onSubmit = (data: QDE1FormData) => {
-        console.log("QDE-1 Data:", { ...data, goldPurity });
+        console.log("QDE-1 Data:", data);
+        setQDE1(data); 
         nextStep();
     };
 
@@ -102,7 +107,7 @@ export default function QDE1PersonalDetails() {
 
             <GoldPuritySlider
                 value={goldPurity}
-                onChange={setGoldPurity}
+                onChange={(value) => setValue("goldPurity", value)}
             />
 
             <Input
@@ -113,7 +118,6 @@ export default function QDE1PersonalDetails() {
                 error={errors.loanAmount?.message}
             />
 
-            {/* Save & Continue */}
             <button
                 type="submit"
                 className="

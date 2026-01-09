@@ -12,6 +12,29 @@ export const qde2Schema = z.object({
   residenceType: z.string().optional(),
   language: z.string().optional(),
   salariedType: z.enum(["SALARIED", "NON_SALARIED"]),
+  officeAddress1: z.string().optional(),
+  officeAddress2: z.string().optional(),
+  officePincode: z.string().optional(),
+}).superRefine((data, ctx) => {
+  if (data.constitution === "SALARIED") {
+    if (!data.officeAddress1) {
+      ctx.addIssue({
+        path: ["officeAddress1"],
+        message: "Office address is required for salaried applicants",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+
+    if (!data.officePincode) {
+      ctx.addIssue({
+        path: ["officePincode"],
+        message: "Office pincode is required for salaried applicants",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+  }
 });
 
+
 export type QDE2FormData = z.infer<typeof qde2Schema>;
+

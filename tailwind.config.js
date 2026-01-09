@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import defaultTheme from "tailwindcss/defaultTheme";
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -8,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "476px", // Add custom breakpoint
+        ...defaultTheme.screens, // Keep default breakpoints
+      },
       colors: {
         /* Theme tokens mapped to CSS variables */
         primary: "var(--color-primary)",
@@ -31,6 +38,7 @@ module.exports = {
       fontFamily: {
         primary: ["Work Sans", "sans-serif"],
         secondary: ["DM Sans", "sans-serif"],
+        lato: ["Lato", "sans-serif"],
       },
       borderRadius: {
         sm: "4px",
