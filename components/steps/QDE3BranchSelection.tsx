@@ -42,7 +42,7 @@ export default function QDE3BranchSelection() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <button
+        {/* <button
         type="button"
         className="
         w-full
@@ -60,7 +60,7 @@ export default function QDE3BranchSelection() {
       >
         <Image src="/icons/location.svg" alt="location" width={20} height={20}/>
          Use Current Location
-      </button>
+      </button> */}
 
       <button
         type="submit"

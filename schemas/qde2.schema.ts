@@ -3,20 +3,29 @@ import { z } from "zod";
 export const qde2Schema = z.object({
   fatherName: z.string().min(1, "Father name is required"),
   motherName: z.string().optional(),
-  constitution: z.string().optional(),
   email: z.string().email("Enter valid email").optional(),
   maritalStatus: z.string().optional(),
-  profession: z.string().optional(),
-  employmentType: z.string().optional(),
-  designation: z.string().optional(),
   residenceType: z.string().optional(),
   language: z.string().optional(),
-  salariedType: z.enum(["SALARIED", "NON_SALARIED"]),
+  salariedType: z.enum(["SALARIED", "NON_SALARIED"]).optional(),
+  // Salaried fields
+  officePincode: z.string().optional(),
   officeAddress1: z.string().optional(),
   officeAddress2: z.string().optional(),
-  officePincode: z.string().optional(),
+  // Non-salaried fields
+  turnover: z.string().optional(),
+  businessPincode: z.string().optional(),
+  businessAddress1: z.string().optional(),
+  businessAddress2: z.string().optional(),
 }).superRefine((data, ctx) => {
-  if (data.constitution === "SALARIED") {
+  if (data.salariedType === "SALARIED") {
+    if (!data.officePincode) {
+      ctx.addIssue({
+        path: ["officePincode"],
+        message: "Office pincode is required for salaried applicants",
+        code: z.ZodIssueCode.custom,
+      });
+    }
     if (!data.officeAddress1) {
       ctx.addIssue({
         path: ["officeAddress1"],
@@ -24,11 +33,20 @@ export const qde2Schema = z.object({
         code: z.ZodIssueCode.custom,
       });
     }
-
-    if (!data.officePincode) {
+  }
+  
+  if (data.salariedType === "NON_SALARIED") {
+    if (!data.businessPincode) {
       ctx.addIssue({
-        path: ["officePincode"],
-        message: "Office pincode is required for salaried applicants",
+        path: ["businessPincode"],
+        message: "Pincode is required for non-salaried applicants",
+        code: z.ZodIssueCode.custom,
+      });
+    }
+    if (!data.businessAddress1) {
+      ctx.addIssue({
+        path: ["businessAddress1"],
+        message: "Business address is required for non-salaried applicants",
         code: z.ZodIssueCode.custom,
       });
     }

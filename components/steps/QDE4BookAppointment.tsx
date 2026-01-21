@@ -262,8 +262,8 @@ export default function QDE4BookAppointment() {
             <Image
               src="/icons/clock.svg"
               alt="Clock"
-              width={20}
-              height={20}
+              width={18}
+              height={18}
               className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
@@ -304,8 +304,8 @@ export default function QDE4BookAppointment() {
             <Image
               src="/icons/clock.svg"
               alt="Clock"
-              width={20}
-              height={20}
+              width={18}
+              height={18}
               className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>

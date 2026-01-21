@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "@/components/ui/Input";
+import { useRef } from "react";
 import { qde5Schema, QDE5FormData } from "@/schemas/qde5.schema";
 import { useJourneyStore } from "@/store/journey.store";
 
@@ -13,6 +14,8 @@ export default function QDE5DigitalKYC() {
   const stored = useJourneyStore((s) => s.qde5);
 
   const [otpSent, setOtpSent] = useState(true);
+    const [otp, setOtp] = useState("");
+  const otpRefs = useRef<HTMLInputElement[]>([]);
 
   const {
     register,
@@ -61,13 +64,59 @@ export default function QDE5DigitalKYC() {
 
       {/* OTP */}
       {otpSent && (
-        <Input
-          label="ENTER OTP"
-          placeholder="Enter 6 digit OTP"
-          {...register("otp")}
-          error={errors.otp?.message}
+        <div className="w-full">
+         <label className="text-xs leading-[138%] font-normal text-labelText mb-2 ">
+      OTP CODE
+    </label>
+
+    <div className="flex w-full justify-between">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <input
+          key={i}
+          ref={(el) => {
+            if (el) otpRefs.current[i] = el;
+          }}
+          maxLength={1}
+          autoFocus={i === 0}
+          className="
+            w-[48px] h-[48px]
+             rounded-md
+            bg-bg
+            text-inputText
+            font-primary font-normal text-sm 
+            border border-border
+            leading-[1.4] tracking-normal
+            placeholder:text-placeholder
+            outline-none
+            focus:ring-1 focus:ring-primary text-center
+          "
+          onChange={(e) => {
+            const value = e.target.value;
+
+            setOtp((prev) => {
+              const next = prev.split("");
+              next[i] = value;
+              return next.join("");
+            });
+
+            // Move to next input
+            if (value && i < 5) {
+              otpRefs.current[i + 1]?.focus();
+            }
+          }}
+          onKeyDown={(e) => {
+            // Move back on delete
+            if (e.key === "Backspace" && !otp[i] && i > 0) {
+              otpRefs.current[i - 1]?.focus();
+            }
+          }}
         />
+      ))}
+    </div>
+    </div>
       )}
+       
+      
 
       {/* ACTION BUTTON */}
       <button

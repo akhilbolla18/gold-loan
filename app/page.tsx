@@ -132,7 +132,7 @@ export default function Home() {
           maxLength={1}
           autoFocus={i === 0}
           className="
-            w-[47px] h-[48px]
+            w-[48px] h-[48px]
              rounded-md
             bg-bg
             text-inputText
