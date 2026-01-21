@@ -1,5 +1,6 @@
 :root {
-  --font-primary: "Work Sans", sans-serif;
-  --font-secondary: "DM Sans", sans-serif;
-  --font-lato:"lato",sans-serif;
+  --font-primary: var(--font-work-sans), sans-serif;
+  --font-secondary: var(--font-dm-sans), sans-serif;
+  --font-lato: var(--font-lato), sans-serif;
 }
+

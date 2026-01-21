@@ -36,9 +36,9 @@ module.exports = {
         inputText: "var(--input-text)",
       },
       fontFamily: {
-        primary: ["Work Sans", "sans-serif"],
-        secondary: ["DM Sans", "sans-serif"],
-        lato: ["Lato", "sans-serif"],
+        primary: ["var(--font-work-sans)", "sans-serif"],
+        secondary: ["var(--font-dm-sans)", "sans-serif"],
+        lato: ["var(--font-lato)", "sans-serif"],
       },
       borderRadius: {
         sm: "4px",

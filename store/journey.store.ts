@@ -4,6 +4,8 @@ import { QDE1FormData } from "@/schemas/qde1.schema";
 import { QDE2FormData } from "@/schemas/qde2.schema";
 import { QDE3FormData } from "@/schemas/qde3.schema";
 import { QDE4FormData } from "@/schemas/qde4.schema";
+import { QDE5FormData } from "@/schemas/qde5.schema";
+
 
 
 type JourneyState = {
@@ -13,12 +15,16 @@ type JourneyState = {
   qde2?: QDE2FormData;
   qde3?: QDE3FormData;
   qde4?: QDE4FormData;
+  qde5?: QDE5FormData;
+
 
 
   setQDE1: (data: QDE1FormData) => void;
   setQDE2: (data: QDE2FormData) => void;
   setQDE3: (data: QDE3FormData) => void;
 setQDE4: (data: QDE4FormData) => void;
+setQDE5: (data: QDE5FormData) => void;
+
 
 
   nextStep: () => void;
@@ -35,13 +41,14 @@ export const useJourneyStore = create<JourneyState>()(
       qde2: undefined,
       qde3: undefined,
       qde4: undefined,
+      qde5: undefined,
 
 
       setQDE1: (data) => set({ qde1: data }),
       setQDE2: (data) => set({ qde2: data }),
       setQDE3: (data) => set({ qde3: data }),
 setQDE4: (data) => set({ qde4: data }),
-
+setQDE5: (data) => set({ qde5: data }),
 
       nextStep: () =>
         set((state) => ({ step: state.step + 1 })),

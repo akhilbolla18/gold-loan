@@ -106,17 +106,12 @@ export default function QDE1PersonalDetails() {
             />
 
             <GoldPuritySlider
-                value={goldPurity}
-                onChange={(value) => setValue("goldPurity", value)}
-            />
-
-            <Input
-                label="LOAN AMOUNT *"
-                required
-                placeholder="Enter loan amount"
-                {...register("loanAmount")}
-                error={errors.loanAmount?.message}
-            />
+    value={goldPurity}
+    onChange={(value) => setValue("goldPurity", value)}
+    loanAmount={watch("loanAmount")}
+    onLoanAmountChange={(amount) => setValue("loanAmount", amount)}
+    loanAmountError={errors.loanAmount?.message}
+/>
 
             <button
                 type="submit"
